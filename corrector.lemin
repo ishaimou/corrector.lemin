@@ -1,0 +1,51 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    check_lemin                                        :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ishaimou <ishaimou@student.1337.ma>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/07/22 04:40:13 by ishaimou          #+#    #+#              #
+#    Updated: 2019/07/22 05:21:28 by ishaimou         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+BEER=🍻i
+BGREEN='\033[1;32m'
+BCYAN='\033[1;36m'
+RESET='\033[0m'
+
+for i in {1..29}
+do
+	printf "${BEER}"
+done
+
+echo "\n\n\----------------|${BGREEN} FLOW-ONE TEST ${RESET}|----------------------\\"
+./generator --flow-one > test_flowone
+grep -m1 -iw "#Here is the number of lines required" test_flowone
+printf "${BCYAN}Your Result : ${RESET}"
+./lem-in < test_flowone | grep -c 'L'
+
+echo "\n\n\----------------|${BGREEN} FLOW-TEN TEST ${RESET}|----------------------\\"
+./generator --flow-ten > test_flowten
+grep -m1 -iw "#Here is the number of lines required" test_flowten
+printf "${BCYAN}Your Result : ${RESET}"
+./lem-in < test_flowten | grep -c 'L'
+
+echo "\n\n\----------------|${BGREEN} FLOW-THOUSAND TEST ${RESET}|-----------------\\"
+./generator --flow-thousand > test_flowthousand
+grep -m1 -iw "#Here is the number of lines required" test_flowthousand
+printf "${BCYAN}Your Result : ${RESET}"
+./lem-in < test_flowthousand | grep -c 'L'
+
+echo "\n\n\----------------|${BGREEN} BIG TEST ${RESET}|---------------------------\\"
+./generator --big > test_big
+grep -m1 -iw "#Here is the number of lines required" test_big
+printf "${BCYAN}Your Result : ${RESET}"
+./lem-in < test_big | grep -c 'L'
+
+echo "\n\n\----------------|${BGREEN} BIG-SUPERPOSITION TEST ${RESET}|-------------\\"
+./generator --big-superposition > test_super
+grep -m1 -iw "#Here is the number of lines required" test_super
+printf "${BCYAN}Your Result : ${RESET}"
+./lem-in < test_super | grep -c 'L'
